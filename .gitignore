@@ -1,0 +1,27 @@
+# pnpm specific directories
+node_modules/
+.pnpm/
+
+# Generated files
+build/
+dist/
+
+# Environment files
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# macOS specific files
+.DS_Store
+
+# npm debug log
+npm-debug.log
+
+# pnpm store files
+.pnpm-store/
+.pnpm-lock.yaml
