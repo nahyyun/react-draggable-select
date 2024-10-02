@@ -9,19 +9,19 @@ import { draggedElements, SelectionContext } from "../types";
 
 import "../index.css";
 
-interface DragBoxProps {
+interface DragSelectProps {
   selectionContext: SelectionContext;
   draggableSection?: MutableRefObject<HTMLElement | null>;
   draggedSectionClassName?: string;
   onSelectionComplete?: (selected: number[]) => void;
 }
 
-export default function DragBox({
+export default function DragSelect({
   selectionContext: { selectableTargets, selectedItems, selectByClick, selectByDrag },
   draggableSection = { current: null },
   draggedSectionClassName = "",
   onSelectionComplete,
-}: DragBoxProps) {
+}: DragSelectProps) {
   const draggedSection = useRef<HTMLDivElement | null>(null);
 
   const dragState = useRef({

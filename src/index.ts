@@ -1,2 +1,2 @@
-export { default } from "./components/DragBox";
+export { default } from "./components/DragSelect";
 export { default as useSelection } from "./hooks/useSelection";
