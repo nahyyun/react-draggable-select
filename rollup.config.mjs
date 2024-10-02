@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import babel from "@rollup/plugin-babel";
 import terser from "@rollup/plugin-terser";
 import { dts } from "rollup-plugin-dts";
+import postcss from "rollup-plugin-postcss";
 
 export default [
   {
@@ -29,12 +30,16 @@ export default [
         babelHelpers: "bundled",
         extensions: [".ts", ".tsx"],
       }),
-      terser(),
+      postcss({
+        inject: { insertAt: "top" },
+      }),
+      process.env.BUILD === "production" && terser(),
     ],
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "es" }],
     plugins: [dts()],
+    external: [/\.css$/],
   },
 ];

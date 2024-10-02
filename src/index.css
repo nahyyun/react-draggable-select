@@ -1,0 +1,8 @@
+.ds-dragged-section {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  z-index: 2000;
+  background-color: #4a90e24d;
+  border: 1px solid #4b91e2;
+}
