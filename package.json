@@ -1,5 +1,5 @@
 {
-  "name": "react-drag-select",
+  "name": "react-draggable-select",
   "version": "0.1.0",
   "description": "React component library for drag-based multi-selection",
   "main": "dist/cjs/index.js",
