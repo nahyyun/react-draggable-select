@@ -6,7 +6,7 @@ import {
   removeElement,
   toggleItemInList,
 } from "../utils/helper";
-import { DragAreaBounds, DragSelectFn } from "../types";
+import { DragSelectFn } from "../types";
 
 export default function useSelection() {
   const selectableTargetsRef = useRef<Set<HTMLElement>>(new Set([]));
