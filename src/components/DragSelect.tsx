@@ -1,10 +1,5 @@
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from "react";
-import {
-  cleardraggedSectionStyle,
-  getDraggedSectionBounds,
-  getEventPosition,
-  printdraggedSection,
-} from "../utils/helper";
+import { getDraggedSectionBounds, getEventPosition, printdraggedSection } from "../utils/helper";
 import { draggedElements, SelectionContext } from "../types";
 
 import "../index.css";
@@ -30,9 +25,9 @@ export default function DragSelect({
       startY: 0,
     },
     isDragging: false,
-    isStart: false,
   });
 
+  const [isStart, setIsStart] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
 
   const draggedElements = useRef<draggedElements>({
@@ -46,14 +41,14 @@ export default function DragSelect({
     dragState.current = {
       position: { startX: currentX, startY: currentY },
       isDragging: false,
-      isStart: true,
     };
+    setIsStart(true);
     setIsEnd(false);
   }, []);
 
   const handleMoveEvent = useCallback(
     (e: PointerEvent) => {
-      if (!draggedSection.current || !dragState.current.isStart) return;
+      if (!draggedSection.current || !isStart) return;
 
       dragState.current.isDragging = true;
 
@@ -66,20 +61,17 @@ export default function DragSelect({
 
       draggedElements.current.prev = draggedElements.current.curr;
     },
-    [selectableTargets]
+    [isStart, selectableTargets]
   );
 
   const handleUpEvent = useCallback(
     (e: PointerEvent) => {
       if (!draggedSection.current) return;
 
+      setIsStart(false);
       setIsEnd(true);
 
-      if (!dragState.current.isDragging) {
-        selectByClick(e.target);
-      } else {
-        cleardraggedSectionStyle(draggedSection.current);
-      }
+      if (!dragState.current.isDragging) selectByClick(e.target);
 
       resetDragInfo();
     },
@@ -89,7 +81,6 @@ export default function DragSelect({
   const resetDragInfo = () => {
     dragState.current = {
       isDragging: false,
-      isStart: false,
       position: { startX: 0, startY: 0 },
     };
 
@@ -122,7 +113,9 @@ export default function DragSelect({
 
   return (
     <>
-      <div ref={draggedSection} className={`ds-dragged-section ${draggedSectionClassName}`} />
+      {isStart && (
+        <div ref={draggedSection} className={`ds-dragged-section ${draggedSectionClassName}`} />
+      )}
     </>
   );
 }

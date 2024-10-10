@@ -75,11 +75,3 @@ export const printdraggedSection = (
   height: ${height}px;
 `;
 };
-
-export const cleardraggedSectionStyle = (draggedSection: HTMLDivElement) => {
-  draggedSection.style.cssText = `
-  inset: 0 0 0 0;
-  width: 0;
-  height:0;
-`;
-};
