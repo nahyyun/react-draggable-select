@@ -57,10 +57,10 @@ export const removeElement = (list: HTMLElement[], element: HTMLElement) => {
   if (findIdx !== -1) list.splice(findIdx, 1);
 };
 
-export const toggleItemInList = (list: number[], element: number) => {
-  if (!list.includes(element)) return [...list, element];
+export const toggleItemInList = (list: number[], item: number) => {
+  if (!list.includes(item)) return [...list, item];
 
-  return list.filter((el) => el !== element);
+  return list.filter((v) => v !== item);
 };
 
 export const getClientId = (client: HTMLElement) => Number(client.dataset.id);
