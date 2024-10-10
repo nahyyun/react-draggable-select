@@ -97,6 +97,7 @@ export default function DragSelect({
   useEffect(() => {
     const target = draggableSection.current || document.body;
     target.style.userSelect = "none";
+    target.style.setProperty("-webkit-user-select", "none");
 
     target.addEventListener("pointerdown", handleDownEvent);
     target.addEventListener("pointermove", handleMoveEvent);
