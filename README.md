@@ -1,4 +1,5 @@
 # React-draggable-select
+### [🚀 Try it out](https://codesandbox.io/p/sandbox/p4ykjl)
 ![2024-10-089 28 52-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/9b7f565d-fc25-4713-8122-7ec6ec3d47c4)
 
 
